@@ -1,0 +1,35 @@
+.navigation-bar__center {
+    font-size: 12px;
+    /* font-size: 60.0vmin; */
+}
+
+.task-name {
+    padding-top: 10px;
+}
+
+.active-task-button {
+    padding: 10px 10px 10px 10px;
+}
+
+.active-task-name {
+    font-size: 12pt;
+}
+
+
+.active-task-project {
+    font-size: 7pt;
+    font-color: #888888;
+    float: right;
+}
+
+.active-task-client {
+    font-size: 7pt;
+    font-color: #888888;
+    float: right;
+}
+
+.ellapsed-time-label {
+    font-size: 20pt;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+}

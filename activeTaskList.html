@@ -1,0 +1,63 @@
+<ons-page ng-controller="ActiveTaskListController">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="signOut()"><ons-icon icon="sign-out" />
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Tasks</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="gotoProjects()">
+                <ons-icon icon="plus" />
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <!-- <ons-navigator var="cientListNavigator" page="ClientsAndProjectsList.html">
+         </ons-navigator> -->
+    <ons-scroller style="height:90%; width: 100%">
+        <div class="task-list">
+            <ons-list ng-repeat="task in activeTasks | orderBy: 'name'">
+                <ons-row >
+                    <ons-col width="62px" class="active-task-button">
+
+                            <div ng-switch="task.status">
+                                <span ng-switch-when="active">
+                                    <ons-button modifier="light" ng-click="clicked(task)" ng-model="task" >
+                                        <ons-icon  icon="stop" style="color: red" />
+                                    </ons-button>
+
+                                </span>
+                                <span ng-switch-when="disable">
+                                    <ons-button modifier="light" ng-click="clicked(task)" ng-model="task" disabled=true>
+                                    <ons-icon  icon="ban" />
+                                    </ons-button>
+                                </span>
+                                <span ng-switch-when="ready">
+                                    <ons-button modifier="light" ng-click="clicked(task)" ng-model="task" >
+                                        <ons-icon  icon="play" style="color: green" /></span>
+                                    </ons-button>
+                            </div>
+                    </ons-col>
+                    <ons-col class="active-task-button">
+                        <header>
+                            <span class="active-task-name">{{task.name}}</span>
+                        </header>
+                        <span class="active-task-project">{{task.project.name}}</span>
+
+                    </ons-col>
+                    <ons-col width="44px" class="active-task-button" style="text-align: center;margin: 10px auto;">
+                        <ons-icon  ng-click="completeTask(task)" ng-model="task" icon="check-square" style="color: grey" />
+                    </ons-col>
+                    <ons-col width="44px" class="active-task-button" style="text-align: center;margin: 10px auto;">
+                        <ons-icon ng-if="task.status!=active"  ng-click="removeTask(task)"  icon="trash" style="color: grey" />
+                    </ons-col>
+                </ons-row>
+            </ons-list>
+        </div>
+    </ons-scroller>
+    <ons-row>
+        <ons-col>
+            <div class="ellapsed-time-label">{{ellapsed}}</div>
+        </ons-col>
+    </ons-row>
+</ons-page>

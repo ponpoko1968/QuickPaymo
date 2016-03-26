@@ -1,0 +1,17 @@
+<ons-page ng-controller="ClientsProjectsController">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="goBack()"><ons-icon icon="fa-close" ></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">プロジェクト一覧</div>
+    </ons-toolbar>
+    <div class="client-list">
+        <ons-list ng-repeat="client in clients">
+            <ons-list-header >{{client.name}}</ons-list-header>
+            <ons-list-item ng-repeat="project in client.projects | filter: {active: true}"
+                           ng-click="gotoTasks(project)"
+            >{{project.name}}</ons-list-item>
+        </ons-list>
+    </div>
+</ons-page>

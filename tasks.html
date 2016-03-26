@@ -1,0 +1,28 @@
+<ons-page ng-controller="TasksController">
+    <ons-toolbar>
+        <div class="left">
+            <ons-back-button />
+        </div>
+        <div class="center">{{project.name}}のタスク一覧</div>
+    </ons-toolbar>
+    <div class="task-list">
+        <ons-list ng-repeat="tasklist in tasklists">
+            <ons-list-header >{{tasklist.name}}</ons-list-header>
+            <ons-list-item ng-repeat="task in tasklist.tasks | filter : {complete: false}" >
+                <!-- ng-click="selectTask(task)" > -->
+                <ons-row>
+                    <ons-col width="40px">
+                        <label class="checkbox  checkbox--list-item__checkmark">
+                            <input type="checkbox" ng-model="selectedTasks[task.id]"  ng-change="onChange()" ng-true-value="true" ng-false-value="false">
+                            <div class="checkbox__checkmark checkbox--noborder__checkmark checkbox--list-item__checkmark"></div>
+                        </label>
+                    </ons-col>
+                    <ons-col class="task-name">
+                        {{task.name}}
+                    </ons-col>
+
+                </ons-row>
+            </ons-list-item>
+        </ons-list>
+    </div>
+</ons-page>
