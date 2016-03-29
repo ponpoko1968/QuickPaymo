@@ -1,25 +1,27 @@
 app.controller('LoginController',function($scope, $http){
     var keytar = require('keytar');
-
-    var email = localStorage.setItem("userName",$scope.email);
-    if( email != null){
+    var undefined;
+    var email = localStorage.getItem("userName");
+    console.log(email);
+    if( ((email != null ? email.length : void 0) > 0) /*|| email == null*/){
         $scope.email = email;
     }else{
         $scope.email = '';
     }
+
     if( ((email != null ? email.length : void 0) > 0)){
-        var pass = keytar.getPassword('QuickPaymo', $scope.email);
+        var pass = keytar.getPassword('QuickPaymo', email);
         if( pass != null ){
             $scope.pass = pass;
         }else{
             $scope.pass = '';
         }
+    }else{
+        $scope.pass = '';
     }
 
     $scope.showSpinner = false;
     $scope.onClick = function(){
-        console.log('trying..'+ $scope.email+':'+$scope.pass);
-        console.log('trying..'+ btoa($scope.email+':'+$scope.pass));
         $scope.showSpinner = true;
         $http({
             method:'POST',

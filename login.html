@@ -1,12 +1,12 @@
 <ons-page ng-controller="LoginController">
     <ons-toolbar>
         <div class="center">Log In</div>
->    </ons-toolbar>
+    </ons-toolbar>
 
     <div class="login-form">
 
-        <input type="email" class="text-input--underbar" placeholder="Email" value="{{email}}">
-        <input type="password" class="text-input--underbar" placeholder="Password" value="{{pass}}">
+        <input type="email" class="text-input--underbar" placeholder="Email" value="{{email}}" ng-model="email">
+        <input type="password" class="text-input--underbar" placeholder="Password" value="{{pass}}" ng-model="pass">
         <br><br>
         <ons-button modifier="large" class="login-button" ng-click="onClick()">Log In</ons-button>
         <br><br>
